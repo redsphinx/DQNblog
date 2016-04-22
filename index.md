@@ -17,7 +17,7 @@ cd deep_q_rl
 
 Now we are inside the `deep_q_rl/` directory which has all the files that we need. Next, we want to create a `job.sh` file that contains the instructions of what we want to run:
 
-<pre><code lang="bash" linenumbers="normal">
+<pre><code language="bash" linenumbers="normal">
 #!/bin/bash
 #SBATCH -p gpu
 #SBATCH -N 1
