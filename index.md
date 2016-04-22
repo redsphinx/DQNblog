@@ -17,7 +17,7 @@ cd deep_q_rl
 
 Now we are inside the `deep_q_rl/` directory which has all the files that we need. Next, we want to create a `job.sh` file that contains the instructions of what we want to run:
 
-<code language="bash" fancy="2">
+<pre><code language="bash" fancy="2">
 #!/bin/bash
 #SBATCH -p gpu
 #SBATCH -N 1
@@ -28,4 +28,4 @@ module load torch7
 module load opencv/gnu/2.4.10
 module load python/2.7.11
 THEANO_FLAGS='device=gpu,floatX=float32' srun -u python deep_q_rl/run_nips.py --rom pong.bin
-</code>
+</code></pre>
