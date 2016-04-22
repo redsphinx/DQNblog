@@ -108,7 +108,7 @@ vim ~/deep_q_rl/deep_q_rl/run_nips.py
 and edit the line so it says:
 
 ```
-BASE_ROM_PATH = "/home/ml0504/2_deep_q_rl/roms/"
+BASE_ROM_PATH = "/home/username/deep_q_rl/roms/"
 ROM = 'pong.bin'
 ```
 
