@@ -3,6 +3,7 @@ layout: page
 title: Transfer Learning in Deep Q-Networks
 description: project blog
 ---
+
 ### Cartesius
 
 For this project I run all programs on the [Dutch national supercomputer](https://userinfo.surfsara.nl/systems/cartesius) called Cartesius. You need a [SURFsara](https://www.surf.nl/en/about-surf/subsidiaries/surfsara) account to be able to do this. 
@@ -18,10 +19,16 @@ cd deep_q_rl
 Now we are inside the `deep_q_rl/` directory which has all the files that we need. Next, we want to create a `job.sh` file that contains the instructions of what we want to run:
 
 ```
+vim job.sh
+```
+
+Paste this in the file:
+
+```
 #!/bin/bash
 #SBATCH -p gpu
 #SBATCH -N 1
-#SBATCH -t 120:00:00
+#SBATCH -t 40:00:00
 module load cuda
 module load cudnn
 module load torch7
@@ -30,7 +37,7 @@ module load python/2.7.11
 THEANO_FLAGS='device=gpu,floatX=float32' srun -u python deep_q_rl/run_nips.py --rom pong.bin
 ```
 
-And then make this file executable by running:
+Save and quit the file. Then make this file executable by running:
 
 ```
 chmod +x job.sh
@@ -74,7 +81,7 @@ cd ALE/
 cp ale.cfg ../
 ```
 
-We're almost there. Now navigate to the `roms/` directory. There is a link for ROMs that you need. So for example, in our case we want to train the DQN to play Pong, so we need the Pong ROM file. However, the code we originally cloned from Github doesn't know that the game was originally called **Video Olympics** and neither did I. It took some time to figure this out, so be sure of what the name was called originally and also check how the code thinks it is called by checking the supported games in:
+We're almost there. Now navigate to the `roms/` directory. There is a link for ROMs that you need to download. So for example, in our case we want to train the DQN to play Pong, so we need the Pong ROM file. However, the code we originally cloned from Github doesn't know that the game was originally called **Video Olympics** and neither did I. It took some time to figure this out, so be sure of what the name was called originally and also check how the code thinks it is called by checking the supported games in:
 
 ```
 cd ~/deep_q_rl/ALE/src/games/supported/
