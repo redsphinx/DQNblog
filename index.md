@@ -178,7 +178,7 @@ Then open ```dep_script.sh``` file:
 
 ```
 cd deep_q_rl/
-vim deep_q_rl/dep_script.sh
+vim dep_script.sh
 ```
 
 and then we make a small change with this regular expression:
