@@ -157,6 +157,8 @@ CPUs: 2
 
 I will refer to the virtual machine as VM from now on. Start the VM and install Ubuntu. I installed mine with 4096 MB of swap space. When that is installed, click on ```Devices``` and choose ```Install Guest Additions``` and restart the VM. 
 
+From this point on we will work on the VM.
+
 #### Installing deep_q_rl
 First install the very basics that we will need:
 
