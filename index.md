@@ -4,7 +4,7 @@ title: Transfer Learning in Deep Q-Networks
 description: project blog
 ---
 
-### Cartesius
+### Training on Cartesius
 
 For this project I run all programs on the [Dutch national supercomputer](https://userinfo.surfsara.nl/systems/cartesius) called Cartesius. You need a [SURFsara](https://www.surf.nl/en/about-surf/subsidiaries/surfsara) account to be able to do this. 
 
@@ -134,3 +134,25 @@ If everything is running smooth, the output should look something like this:
 2099600       gpu   job.sh   username  R    00:00:05      1 gcn18
 
 ```
+
+### Playing with a trained model
+
+All of our files are now on Cartesius. So we need to move them to a local computer so we can watch it play. To do this I will let it run on a virtual machine on my laptop. The reason I don't install it directly on my laptop is because in the past I've messed up quite a lot by experimenting with my system. I can only recommend using virtual machines. 
+
+#### VirtualBox
+Let's start by opening up a terminal on our local computer and installing [VirtualBox](https://www.virtualbox.org/manual/UserManual.html):
+
+```
+sudo apt-get install virtualbox
+```
+
+Next, download a [Ubuntu 14.04 64-bit desktop ISO image](http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso). Next, launch VirtualBox and make a new Linux machine. I made mine with the following specifications:
+
+```
+Drive size: 25 GB
+RAM: 4096 MB
+Video Memory: 128 MB
+CPUs: 2
+```
+
+I will refer to the virtual machine as VM from now on. Start the VM and install Ubuntu. I installed mine with 4096 MB of swap space. When that is installed, click on ```Devices``` and choose ```Install Guest Additions``` and restart the VM. 
