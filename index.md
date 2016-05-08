@@ -156,3 +156,44 @@ CPUs: 2
 ```
 
 I will refer to the virtual machine as VM from now on. Start the VM and install Ubuntu. I installed mine with 4096 MB of swap space. When that is installed, click on ```Devices``` and choose ```Install Guest Additions``` and restart the VM. 
+
+#### Installing deep_q_rl
+First install the very basics that we will need:
+
+```
+sudo apt-get install vim
+sudo apt-get install git
+```
+
+Next, clone [spragunr's](https://github.com/spragunr/deep_q_rl) repository to the VM -- this is the repo we downloaded way at the beginning on Cartesius.
+
+```
+cd Documents/
+git clone https://github.com/spragunr/deep_q_rl
+```
+
+Then open ```dep_script.sh``` file:
+
+```
+cd deep_q_rl/
+vim deep_q_rl/dep_script.sh
+```
+
+and then we make a small change with this regular expression:
+
+```
+:%s/make -j2/make -j 4/
+:wq
+```
+
+Now we run the ```dep_script.sh```:
+
+```
+./deep_q_rl/dep_script.sh
+```
+
+#### Installing CUDA
+
+
+#### Getting the files on Cartesius
+
