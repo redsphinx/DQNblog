@@ -195,7 +195,15 @@ Now we run the ```dep_script.sh```:
 ```
 
 #### Installing CUDA
+Download and install CUDA:
 
+```
+cd ~/Downloads
+wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+md5sum cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+```
+
+The last statement returns a long string that should match this: ```5cf65b8139d70270d9234d5ff4d697c7```
 
 #### Getting the files on Cartesius
 
