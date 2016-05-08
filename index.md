@@ -217,5 +217,19 @@ sudo apt-get install cuda
 
 #### Getting the files on Cartesius
 
-For this we log in on Cartesius. This can be done in the terminal of the VM or the terminal of your real local machine. It doesn't matter. 
+At the end of the **Cartesius** part of this tutorial, we had a folder named ```pong_xx-xx-xx-xx_xxxxxx_xxxx``` with all the files we need. Log in on Cartesius. This can be done in the terminal of the VM or the terminal of your real local machine. It doesn't matter. I set up a new repository on my GitHub account and pushed the ```pong``` folder. For instructions on how to do this see [this](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/). Note that you have to make the following changes through commandline before being able to push:
+
+```
+unset SSH_ASKPASS
+git remote set-url origin https://Your-Github-UserName@github.com/Your-Github-UserName/REPO-NAME
+```
+
+Now we go to the terminal of our VM and we clone the folder:
+
+```
+cd Documents/
+git clone https://github.com/Your-Github-UserName/REPO-NAME
+```
+
+We will keep calling this folder **REPO-NAME**, but note that you will probably call it something else. 
 
