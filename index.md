@@ -191,7 +191,7 @@ and then we make a small change with this regular expression:
 Now we run the ```dep_script.sh```:
 
 ```
-./deep_q_rl/dep_script.sh
+./dep_script.sh
 ```
 
 #### Installing CUDA
