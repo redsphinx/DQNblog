@@ -134,6 +134,8 @@ If everything is running smooth, the output should look something like this:
 2099600       gpu   job.sh   username  R    00:00:05      1 gcn18
 
 ```
+After the job has finished running, you have a trained model!! Hooray!!
+If we check out the contents of ```deep_q_rl/``` we can see that there is a new folder called ```pong_xx-xx-xx-xx_xxxxxx_xxxx```, the x's being numbers that get automatically generated. This folder contains everything about our trained model.
 
 ### Playing with a trained model
 
@@ -205,5 +207,15 @@ md5sum cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
 
 The last statement returns a long string that should match this: ```5cf65b8139d70270d9234d5ff4d697c7```
 
+Now install CUDA:
+
+```
+sudo dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb
+sudo apt-get update
+sudo apt-get install cuda
+```
+
 #### Getting the files on Cartesius
+
+For this we log in on Cartesius. This can be done in the terminal of the VM or the terminal of your real local machine. It doesn't matter. 
 
