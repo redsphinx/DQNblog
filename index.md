@@ -70,7 +70,7 @@ chmod +x install_dep.sh
 Now we're ready to install `pylearn2` and `ALE`. Let's do it:
 
 ```
-module load cuda cudnn torch7 module load opencv/gnu/2.4.10 module load python/2.7.11
+module load cuda cudnn torch7 opencv/gnu/2.4.10 python/2.7.11
 ./install_dep.sh
 ```
 
@@ -137,3 +137,93 @@ If everything is running smooth, the output should look something like this:
 After the job has finished running, you have a trained model!! Hooray!!
 If we check out the contents of ```deep_q_rl/``` we can see that there is a new folder called ```pong_xx-xx-xx-xx_xxxxxx_xxxx```, the x's being numbers that get automatically generated. This folder contains everything about our trained model.
 
+### Playing on Cartesius
+
+After about a day you should have a trained network for your game. (For the nature paper it takes about 4 to 5 days on Cartesius) Let's watch it play!
+Log in to your SURFsara account through the terminal like this:
+
+```
+ssh -CY username@cartesius.surfsara.nl
+```
+
+Note that you have to be connecting from a whitelisted IP-address. You can send an e-mail to their [helpdesk](https://userinfo.surfsara.nl/contact) to get your IP whitelisted. 
+
+Make a ```.theanorc``` in your Cartesius home directory containing the following:
+
+```
+[global]
+floatX = float32
+device = gpu
+allow_gc = False
+```
+
+We also need to make a ```sleepjob.sh``` file in order to reserve a GPU node to later execute python code on:
+
+```
+#!/bin/bash
+#SBATCH -p gpu
+#SBATCH -N 1
+#SBATCH -t 1:00:00
+sleep 1200
+```
+
+All this does is sleep and reserving a node for us to work on. Next, run it:
+
+```
+sbatch sleepjob.sh
+```
+
+Now go to:
+
+```
+cd ~/deep_q_rl/deep_q_rl/
+vim ale_run_watch.py
+```
+
+Because we trained using the ```run_nips.py``` file we also need to run it with that file so make the change:
+
+```
+:s/run_nature/run_nips/
+:wq
+```
+
+Now run ```squeue``` to get the node where ```sleepjob.sh``` is running on:
+
+```
+squeue -u username
+```
+
+This returns: 
+
+```
+  JOBID PARTITION       NAME       USER ST        TIME  NODES NODELIST(REASON)
+2099600       gpu   sleepjob   username  R    00:00:05      1 gcn18
+
+```
+
+And we need ```gcn18```. Now ssh with -CY parameters into this node:
+
+```
+ssh -CY gcn18
+```
+
+Now load the modules necessary:
+
+```
+module load cuda cudnn torch7 opencv/gnu/2.4.10 python/2.7.11
+```
+
+And run the file:
+
+```
+cd ~/deep_q_rl/deep_q_rl/
+python ale_run_watch.py ../pong_xx-xx-xx-xx_xxxxxx_xxxx/network_file_99.pkl
+```
+
+And voila, you can see your trained network playing Pong!!!
+
+To see a graph with training stuff run:
+
+```
+python plot_results.py ../pong_xx-xx-xx-xx_xxxxxx_xxxx/results.csv
+```
