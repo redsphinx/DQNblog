@@ -221,9 +221,14 @@ python ale_run_watch.py ../pong_xx-xx-xx-xx_xxxxxx_xxxx/network_file_99.pkl
 ```
 
 And voila, you can see your trained network playing Pong!!!
+![](http://i.imgur.com/OADmd83.gif)
 
 To see a graph with training stuff run:
 
 ```
 python plot_results.py ../pong_xx-xx-xx-xx_xxxxxx_xxxx/results.csv
 ```
+
+Which gives:
+
+![](http://i.imgur.com/YuhzDaz.png)
