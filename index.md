@@ -246,4 +246,5 @@ python plot_filters.py python ../pong-nips/network_file_99.pkl
 ```
 
 which gives:
+
 ![](http://i.imgur.com/69U4MVl.png)
