@@ -285,5 +285,13 @@ Unfortunately this doesn't work as there is some incompatibility between the mod
 THEANO_FLAGS='device=gpu,floatX=float32' srun -u python deep_q_rl/run_nips.py --rom pong.bin --nn-file deep_q_rl/trained_breakout.pkl
 ```
 
-and then `sbatch job.sh`
+and then `sbatch job.sh`. 
+
+I also trained a Ms. PacMan model and tried to get it to play Pong and Breakout, but it's also incompatible. So far a table of what is currently training:
+
+![](http://i.imgur.com/iuiCSYd.png)
+
+#### Method 2: Only copy the 2 convolutional layers from the trained network
+
+No idea how to do this. Work in progress.
 
