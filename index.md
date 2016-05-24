@@ -137,6 +137,12 @@ If everything is running smooth, the output should look something like this:
 After the job has finished running, you have a trained model!! Hooray!!
 If we check out the contents of ```deep_q_rl/``` we can see that there is a new folder called ```pong_xx-xx-xx-xx_xxxxxx_xxxx```, the x's being numbers that get automatically generated. This folder contains everything about our trained model.
 
+I will rename this folder ```pong-nips```:
+
+```
+mv ~/deep_q_rl/pong__xx-xx-xx-xx_xxxxxx_xxxx ~/deep_q_rl/pong-nips
+```
+
 ### Playing on Cartesius
 
 After about a day you should have a trained network for your game. (For the nature paper it takes about 4 to 5 days on Cartesius) Let's watch it play!
@@ -217,7 +223,7 @@ And run the file:
 
 ```
 cd ~/deep_q_rl/deep_q_rl/
-python ale_run_watch.py ../pong_xx-xx-xx-xx_xxxxxx_xxxx/network_file_99.pkl
+python ale_run_watch.py ../pong-nips/network_file_99.pkl
 ```
 
 And voila, you can see your trained network playing Pong!!!
@@ -226,9 +232,18 @@ And voila, you can see your trained network playing Pong!!!
 To see a graph with training stuff run:
 
 ```
-python plot_results.py ../pong_xx-xx-xx-xx_xxxxxx_xxxx/results.csv
+python plot_results.py ../pong-nips/results.csv
 ```
 
 Which gives:
 
 ![](http://i.imgur.com/YuhzDaz.png)
+
+To visualize the filters in the first layers of the trained network:
+
+```
+python plot_filters.py python ../pong-nips/network_file_99.pkl 
+```
+
+which gives:
+![](http://i.imgur.com/69U4MVl.png)
