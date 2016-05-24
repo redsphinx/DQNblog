@@ -135,7 +135,7 @@ If everything is running smooth, the output should look something like this:
 
 ```
 After the job has finished running, you have a trained model!! Hooray!!
-If we check out the contents of ```deep_q_rl/``` we can see that there is a new folder called ```pong_xx-xx-xx-xx_xxxxxx_xxxx```, the x's being numbers that get automatically generated. This folder contains everything about our trained model.
+If we check out the contents of ```deep_q_rl/``` we can see that there is a new folder called `pong_xx-xx-xx-xx_xxxxxx_xxxx`, the x's being numbers that get automatically generated. This folder contains everything about our trained model.
 
 I will rename this folder ```pong-nips```:
 
