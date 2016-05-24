@@ -249,3 +249,12 @@ which gives:
 
 ![](http://i.imgur.com/69U4MVl.png)
 
+### Doing transfer learning
+
+![](https://s-media-cache-ak0.pinimg.com/736x/32/41/b0/3241b0fbb5f27d159c834c6fdee69a5f.jpg)
+
+Let's do some transfer learning!!!
+
+#### Method 1: Train a trained network
+
+Let's see what happens if we take our trained Pong network and just keep training it, but on a different game. We will first train it to play Breakout.
