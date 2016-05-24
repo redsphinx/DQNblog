@@ -258,3 +258,32 @@ Let's do some transfer learning!!!
 #### Method 1: Train a trained network
 
 Let's see what happens if we take our trained Pong network and just keep training it, but on a different game. We will first train it to play Breakout.
+
+```
+cp ~/deep_q_rl/pong-nips/network_file_99.pkl deep_q_rl/trained_pong.pkl
+vim job.sh
+```
+
+Edit the line in `job.sh` such that it reads:
+
+```
+THEANO_FLAGS='device=gpu,floatX=float32' srun -u python deep_q_rl/run_nips.py --rom breakout.bin --nn-file deep_q_rl/trained_pong.pkl
+```
+
+And also edit `run_nips` so that it has the correct ROM `ROM = 'breakout.bin'`. You should check if `~/deep_q_rl/roms/` contains the `breakout.bin` ROM. If not, download it like we did with the Pong ROM.
+
+Now do the following:
+
+```
+cd ~/deep_q_rl/
+sbatch job.sh
+```
+
+Unfortunately this doesn't work as there is some incompatibility between the models with regards to the action space. So slight change of plans. Train a network to play breakout and then do the same steps. So your `job.sh` file reads
+
+```
+THEANO_FLAGS='device=gpu,floatX=float32' srun -u python deep_q_rl/run_nips.py --rom pong.bin --nn-file deep_q_rl/trained_breakout.pkl
+```
+
+and then `sbatch job.sh`
+
